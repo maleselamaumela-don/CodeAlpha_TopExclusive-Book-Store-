@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books | Page Co. Books</title>
+    <link rel="stylesheet" href="{% static 'css/style (1).css' %}">
+</head>
+<body>
+<nav class="navbar">
+    <a href="{% url 'home' %}">Home</a>
+    <a href="{% url 'book_list' %}">Books</a>
+    <a href="{% url 'about' %}">About</a>
+    <a href="{% url 'contact' %}">Contact</a>
+    <a href="{% url 'login_page' %}" data-login-link>Login</a>
+    <a href="{% url 'signup_page' %}" data-signup-link>Sign Up</a>
+    <a href="{% url 'cart_page' %}">Cart (<span id="cart-count">0</span>)</a>
+    <a href="{% url 'orders_page' %}">My Orders</a>
+    <a href="#" data-logout-link hidden>Log out</a>
+</nav>
+
+<h1 class="introduction-home">Our Books</h1>
+<p>Choose a book to see its details or add it to your cart.</p>
+<section class="books" id="all-books">
+    {% for product in products %}
+    <article class="book-card">
+        <img src="{% static 'images/' %}{{ product.image }}" alt="{{ product.title }}">
+        <h2>{{ product.title }}</h2>
+        <p>Author: {{ product.author }}</p>
+        <p class="price">R{{ product.price }}</p>
+        <p>{{ product.description }}</p>
+        <p>{{ product.stock }} in stock</p>
+        <a class="btn" href="{% url 'book_detail' product.id %}">View Book</a>
+        <button class="btn" type="button" data-add-to-cart="{{ product.id }}">Add to Cart</button>
+    </article>
+    {% empty %}
+    <p>No books are available yet. Run <code>python manage.py seed_books</code> to add the starter catalog.</p>
+    {% endfor %}
+</section>
+
+<p class="message" id="message" role="status" aria-live="polite"></p>
+<footer class="footer">
+    <p>2026 Page Co. Books | Exclusive books, delivered to you.</p>
+</footer>
+<script src="{% static 'js/script (1).js' %}"></script>
+</body>
+</html>

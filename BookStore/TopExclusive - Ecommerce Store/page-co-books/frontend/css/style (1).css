@@ -1,0 +1,259 @@
+/* =====================================================
+   PAGE CO. BOOKS - MAIN STYLESHEET (one file, works offline)
+   Colours used: Red, Black, Purple (plus white/grey for text and backgrounds)
+   Fonts: system fonts only - nothing is downloaded from the internet
+   ===================================================== */
+
+/* ---------- 1. COLOUR VARIABLES ----------
+   Change a colour here and it updates everywhere on the site. */
+:root {
+    --black:       #111015;
+    --black-soft:  #1c1a24;
+    --purple:      #5b21b6;
+    --purple-dark: #3b0f80;
+    --purple-soft: #f1ebfb;
+    --red:         #c8102e;
+    --red-dark:    #9d0c24;
+    --white:       #ffffff;
+    --page-bg:     #f7f5fa;
+    --text:        #1d1b24;
+    --muted:       #6b6677;
+    --radius:      12px;
+    --shadow:      0 4px 14px rgba(17, 16, 21, 0.10);
+    --shadow-big:  0 12px 28px rgba(91, 33, 182, 0.25);
+}
+
+/* ---------- 2. RESET & BASE ---------- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: "Segoe UI", system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
+    background: var(--page-bg);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+img { max-width: 100%; }
+a   { color: var(--purple); text-decoration: none; }
+a:hover { color: var(--red); }
+
+/* Plain paragraph right under the page title */
+body > p { text-align: center; color: var(--muted); margin-bottom: 24px; }
+
+/* ---------- 3. NAVIGATION BAR ---------- */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+    padding: 14px 20px;
+    background: var(--black);
+    border-bottom: 3px solid var(--red);
+}
+.navbar a {
+    color: var(--white);
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-weight: 600;
+    transition: background 0.25s, transform 0.25s;
+}
+.navbar a:hover { background: var(--purple); color: var(--white); transform: translateY(-2px); }
+
+/* ---------- 4. HOME PAGE HEADING & BANNER ---------- */
+.introduction-home {
+    text-align: center;
+    font-size: 2.4rem;
+    margin: 36px 16px 8px;
+    color: var(--black);
+}
+.introduction-home::after {            /* small red line under the title */
+    content: "";
+    display: block;
+    width: 70px;
+    height: 4px;
+    margin: 12px auto 0;
+    background: var(--red);
+    border-radius: 4px;
+}
+
+/* The banner image sits directly inside <body> */
+body > img {
+    display: block;
+    width: 100%;
+    max-width: 1200px;
+    height: auto;
+    margin: 0 auto 40px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+/* ---------- 5. BOOK GRID & BOOK CARDS ---------- */
+.books {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); /* auto columns */
+    gap: 24px;
+    max-width: 1200px;
+    margin: 0 auto 60px;
+    padding: 0 20px;
+}
+.book-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 18px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    border-top: 4px solid var(--purple);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.book-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-big); }
+.book-card img {
+    width: 100%;
+    height: 240px;
+    object-fit: contain;               /* shows the full cover */
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
+.book-card h3 { font-size: 1.05rem; margin-bottom: 4px; color: var(--black); }
+.book-card p  { font-size: 0.9rem; color: var(--muted); }
+.price {
+    font-size: 1.25rem !important;
+    font-weight: 700;
+    color: var(--red) !important;
+    margin: 8px 0 14px;
+}
+
+/* ---------- 6. BUTTONS ---------- */
+.add-to-cart,
+.btn {
+    display: inline-block;
+    margin-top: auto;                  /* pushes button to bottom of card */
+    padding: 11px 22px;
+    border: none;
+    border-radius: 999px;
+    background: var(--purple);
+    color: var(--white);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
+}
+.add-to-cart:hover,
+.btn:hover {
+    background: var(--red);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(200, 16, 46, 0.35);
+}
+.add-to-cart:active, .btn:active { transform: translateY(0); }
+
+/* ---------- 7. ABOUT & CONTACT SECTIONS ---------- */
+.about, .contact, .cart {
+    max-width: 900px;
+    margin: 0 auto 50px;
+    padding: 32px;
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+.about h2, .contact h2, .cart h2 {
+    color: var(--purple-dark);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 3px solid var(--red);
+    display: inline-block;
+}
+.about h3 { margin: 18px 0 6px; color: var(--black); }
+.about ul { margin-left: 22px; }
+.about li { margin-bottom: 4px; }
+
+/* ---------- 8. FORMS (contact, login, signup) ---------- */
+label { display: block; margin: 14px 0 6px; font-weight: 600; }
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+input[type="number"],
+textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 2px solid #ddd8e6;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 1rem;
+    background: var(--white);
+    transition: border-color 0.25s, box-shadow 0.25s;
+}
+input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--purple);
+    box-shadow: 0 0 0 4px rgba(91, 33, 182, 0.15);
+}
+input[type="checkbox"] { accent-color: var(--purple); margin-right: 6px; }
+.contact-form .btn, .login-container .btn { margin-top: 20px; width: 100%; }
+.cart form .btn { margin-top: 20px; width: 100%; }
+
+/* Message area (errors / success) - empty until JavaScript fills it */
+.message { margin-top: 14px; font-weight: 600; text-align: center; }
+.message.error   { color: var(--red); }
+.message.success { color: var(--purple); }
+
+/* ---------- 9. LOGIN / SIGNUP BOX ---------- */
+.login-container {
+    max-width: 420px;
+    margin: 50px auto;
+    padding: 34px;
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-big);
+    border-top: 5px solid var(--red);
+}
+.login-container h2 { text-align: center; margin-bottom: 8px; color: var(--black); }
+.login-container p  { margin-top: 12px; text-align: center; }
+
+/* ---------- 10. SHOPPING CART ---------- */
+.cart { max-width: 1000px; overflow-x: auto; }
+.cart-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+.cart-table th {
+    background: var(--black);
+    color: var(--white);
+    padding: 12px;
+    text-align: left;
+}
+.cart-table td { padding: 12px; border-bottom: 1px solid #e8e4ef; }
+.cart-table tbody tr:hover { background: var(--purple-soft); }
+.cart-table img { width: 50px; height: auto; border-radius: 4px; }
+.cart-total { text-align: right; margin-bottom: 14px; color: var(--black); }
+.cart-total span { color: var(--red); }
+
+/* ---------- 11. FOOTER ---------- */
+.footer {
+    background: var(--black);
+    color: #cfc9db;
+    text-align: center;
+    padding: 24px 16px;
+    border-top: 3px solid var(--purple);
+}
+
+/* ---------- 12. RESPONSIVE (tablet and mobile) ---------- */
+@media (max-width: 900px) {                 /* tablet */
+    .introduction-home { font-size: 2rem; }
+    .books { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+}
+@media (max-width: 600px) {                 /* mobile */
+    .navbar { gap: 2px; padding: 10px; }
+    .navbar a { padding: 6px 10px; font-size: 0.9rem; }
+    .introduction-home { font-size: 1.6rem; }
+    .books { grid-template-columns: repeat(2, 1fr); gap: 14px; padding: 0 12px; }
+    .book-card { padding: 12px; }
+    .book-card img { height: 170px; }
+    .about, .contact, .cart { margin: 0 12px 30px; padding: 20px; }
+    .login-container { margin: 24px 12px; padding: 24px; }
+}
+@media (max-width: 380px) {                 /* very small phones */
+    .books { grid-template-columns: 1fr; }
+}

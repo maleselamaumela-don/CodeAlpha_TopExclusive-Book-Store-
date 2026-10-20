@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{% static 'css/style (1).css' %}">
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar">
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'book_list' %}">Books</a>
+        <a href="{% url 'about' %}">About</a>
+        <a href="{% url 'contact' %}">Contact</a>
+        <a href="{% url 'login_page' %}" data-login-link>Login</a>
+        <a href="{% url 'signup_page' %}" data-signup-link>Sign Up</a>
+        <a href="{% url 'cart_page' %}">Cart (<span id="cart-count">0</span>)</a>
+        <a href="{% url 'orders_page' %}">My Orders</a>
+        <a href="#" data-logout-link hidden>Log out</a>
+</nav>
+
+<!-- About -->
+<section class="about">
+    <h2>About Page Co. Books</h2>
+
+    <h3>Who we are</h3>
+    <p>We are an online bookstore focused on providing a carefully selected collection of exclusive and high-quality books. Our collection includes books that cover personal development, business, finance, leadership, education, and personal growth.</p>
+
+    <h3>Our purpose</h3>
+    <p>Our purpose is to make valuable books easier to discover and access. We want to encourage people to read, learn, gain knowledge, and develop themselves through books that can make a positive difference in their lives.</p>
+
+    <h3>Why choose us?</h3>
+    <ul>
+        <li>Hand-picked, exclusive titles</li>
+        <li>Fair prices</li>
+        <li>Simple and friendly shopping</li>
+    </ul>
+
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <p>2026 Page Co. Books | Exclusive books, delivered to you.</p>
+</footer>
+<script src="{% static 'js/script (1).js' %}"></script>
+</body>
+</html>

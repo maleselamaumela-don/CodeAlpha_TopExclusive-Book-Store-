@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{% static 'css/style (1).css' %}">
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar">
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'book_list' %}">Books</a>
+        <a href="{% url 'about' %}">About</a>
+        <a href="{% url 'contact' %}">Contact</a>
+        <a href="{% url 'login_page' %}" data-login-link>Login</a>
+        <a href="{% url 'signup_page' %}" data-signup-link>Sign Up</a>
+        <a href="{% url 'cart_page' %}">Cart (<span id="cart-count">0</span>)</a>
+        <a href="{% url 'orders_page' %}">My Orders</a>
+        <a href="#" data-logout-link hidden>Log out</a>
+</nav>
+
+<h1 class="introduction-home">Welcome To Page Co. Books</h1>
+<p>Find the book you have been looking for, at an affordable price!</p>
+
+<!--Front banner picture-->
+<img src="{% static 'images/HomePage Picture.png' %}" height="500" width="1200" alt="A selection of books">
+
+<!-- Footer -->
+<footer class="footer">
+    <p>2026 Page Co. Books | Exclusive books, delivered to you.</p>
+</footer>
+<script src="{% static 'js/script (1).js' %}"></script>
+</body>
+</html>
